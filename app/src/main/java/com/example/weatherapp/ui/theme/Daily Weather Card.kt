@@ -50,7 +50,7 @@ fun DailyWeather(
             )
 
             Text(text = dailyForecast.hour, fontSize = 15.sp)
-            Text(text = dailyForecast.temperature, fontSize = 20.sp)
+            Text(text = dailyForecast.temperature, fontSize = 30.sp)
 
         }
 
