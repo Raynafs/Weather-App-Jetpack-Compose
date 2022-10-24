@@ -18,15 +18,25 @@ import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
 
 data class DailyWeatherCard(
-
     @DrawableRes val Image: Int,
     val hour: String,
     val temperature: String
+    )
+
+val dailyList = listOf(
+    DailyWeatherCard(R.drawable.rainsun,"Mon","26.0"),
+    DailyWeatherCard(R.drawable.rainsun,"Tue","27.0"),
+    DailyWeatherCard(R.drawable.rainsun,"Wed","32.0"),
+    DailyWeatherCard(R.drawable.rainsun,"Thur","15.0"),
+    DailyWeatherCard(R.drawable.rainsun,"Fri","27.0"),
+    DailyWeatherCard(R.drawable.rainsun,"Sat","14.0"),
+    DailyWeatherCard(R.drawable.rainsun,"Sun","27.0"),
 
 )
+
 @Composable
 fun DailyWeather(
-    dailyForecast:DailyWeatherCard
+    dailyCard: DailyWeatherCard
 ) {
     Card(
         modifier = Modifier
@@ -37,6 +47,7 @@ fun DailyWeather(
 
     )
     {
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(top = 8.dp, bottom = 8.dp, start = 16.dp, end = 16.dp)
@@ -48,12 +59,12 @@ fun DailyWeather(
                     .padding(4.dp)
                     .size(30.dp)
             )
-
-            Text(text = dailyForecast.hour, fontSize = 15.sp)
-            Text(text = dailyForecast.temperature, fontSize = 30.sp)
+            Text(text = dailyCard.hour, fontSize = 15.sp)
+            Text(text = dailyCard.temperature, fontSize = 25.sp)
 
         }
 
     }
+
 }
 

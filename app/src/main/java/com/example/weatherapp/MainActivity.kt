@@ -7,6 +7,8 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -33,14 +35,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
-                    if (shouldShowOnboarding) {
-                        Weather( onContinueClicked = {shouldShowOnboarding = false} )
+            var shouldShowOnBoarding by rememberSaveable { mutableStateOf(true) }
+                    if (shouldShowOnBoarding) {
+                        Weather( onContinueClicked = {shouldShowOnBoarding = false} )
                     } else {
-                        RealWeather()
+                        RealWeather(
+                        )
                     }
 
-            }
+        }
         }
     }
 
@@ -162,9 +165,15 @@ fun RealWeather()
                         color = Color.White,
                     ),
                 verticalArrangement = Arrangement.Center
-
             ) {
-                DailyWeather()
+                LazyRow{
+                    items (dailyList)
+                    { lists ->
+                        DailyWeather(dailyCard = lists)
+                    }
+
+             }
+
             }
 
         }
