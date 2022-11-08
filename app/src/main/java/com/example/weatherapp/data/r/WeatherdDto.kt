@@ -1,6 +1,9 @@
 package com.example.weatherapp.data.r
 
+import com.squareup.moshi.Json
+
 data class WeatherDto(
-    val temperature: Double
+    @field:Json(name="hourly")
+    val weatherData: WeatherDataDto
 )
 
